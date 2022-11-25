@@ -3,6 +3,8 @@ import DashBoard from "../Layout/Dashboard/Dashboard";
 import Main from "../Layout/Main";
 import AddCategory from "../Pages/DashBoard/AddCategory/AddCategory";
 import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
+import AllCategory from "../Pages/DashBoard/AllCategory/AllCategory";
+import AllProductsData from "../Pages/DashBoard/AllProductsData/AllProductsData";
 import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
 import AllProducts from "../Pages/Home/AllProducts/AllProducts";
 import Home from "../Pages/Home/Home/Home";
@@ -10,6 +12,8 @@ import LogIn from "../Pages/Login/LogIn/LogIn";
 import Registration from "../Pages/Login/Registration/Registration";
 import ResetPassword from "../Pages/Login/ResetPassword/ResetPassword";
 import ErrorPage from "../Pages/SharedPage/ErrorPage/ErrorPage";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -42,23 +46,27 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard",
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><PrivateRoute><AllUsers></AllUsers></PrivateRoute></AdminRoute>
             },
             {
                 path: "/dashboard/products",
-                element: <AllProducts></AllProducts>
+                element: <AdminRoute><PrivateRoute><AllProductsData></AllProductsData></PrivateRoute></AdminRoute>
             },
             {
                 path: "/dashboard/add-product",
-                element: <AddProduct></AddProduct>
+                element: <AdminRoute><PrivateRoute><AddProduct></AddProduct></PrivateRoute></AdminRoute>
             },
             {
                 path: "/dashboard/users",
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><PrivateRoute><AllUsers></AllUsers></PrivateRoute></AdminRoute>
+            },
+            {
+                path: "/dashboard/category",
+                element: <AdminRoute><PrivateRoute><AllCategory></AllCategory></PrivateRoute></AdminRoute>
             },
             {
                 path: "/dashboard/add-category",
-                element: <AddCategory></AddCategory>
+                element: <AdminRoute><PrivateRoute> <AddCategory></AddCategory></PrivateRoute></AdminRoute>
             },
         ]
     }

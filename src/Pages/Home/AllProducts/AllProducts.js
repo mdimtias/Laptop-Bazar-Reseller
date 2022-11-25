@@ -1,7 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
+    
     return (
         <div className='container mx-auto py-10'>
            <div className="category flex justify-between items-center">
@@ -20,6 +22,8 @@ const AllProducts = () => {
              </div>
            </div>
             <div className="grid gap-5 mx-0 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+                
+                <Product></Product>
                 <Product></Product>
                 <Product></Product>
                 <Product></Product>

@@ -1,12 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { ImgUpload } from "../../../hooks/ImgUpload";
+import Loading from "../../SharedPage/Loading/Loading";
 
 const Registration = () => {
   const { user } = useContext(AuthContext);
   const { createUser, updateUser } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
@@ -14,8 +16,14 @@ const Registration = () => {
     }
   }, [navigate, user]);
 
+  console.log(loading)
+ 
   const signUpHandler = async (e) => {
+    
     e.preventDefault();
+    
+    console.log(loading)
+    setLoading(true)
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -32,8 +40,7 @@ const Registration = () => {
     console.log(accountType, name, email, password, formData);
     // Create User Database
     const createUserDb = async (email) => {
-      // await fetch(`http://localhost:5000/users/${email}`, {
-      await fetch(`http://localhost:5000/users/${email}`, {
+      await fetch(`http://localhost:8000/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -51,10 +58,10 @@ const Registration = () => {
       .then(() => {
         updateUser(name, imageUploadServer).then(() => {
           createUserDb(email);
+          setLoading(false)
+          toast.success("Registration Successful");
         });
-        toast.success("Registration Successful");
       })
-
       .catch((err) => toast.error("Account Create Fail"));
   };
   return (
@@ -66,6 +73,7 @@ const Registration = () => {
             type="text"
             placeholder="Full Name"
             className="input input-bordered input-accent w-full max-w-xs"
+            required
           />
         </div>
 
@@ -75,6 +83,7 @@ const Registration = () => {
             type="text"
             placeholder="Email"
             className="input input-bordered input-accent w-full max-w-xs"
+            required
           />
         </div>
         <div className="p-2">
@@ -83,6 +92,7 @@ const Registration = () => {
             type="file"
             accept="image/*"
             className="file-input input-accent w-full max-w-xs"
+            required
           />
         </div>
         <div className="p-2">
@@ -91,6 +101,7 @@ const Registration = () => {
             type="password"
             placeholder="Password"
             className="input input-bordered input-accent w-full max-w-xs"
+            required
           />
         </div>
         <div className="p-2">
@@ -123,8 +134,9 @@ const Registration = () => {
         </div>
         <div>
           <button type="submit" className="btn w-full max-w-xs">
-            SignUp
+            {loading? <Loading></Loading> : "SignUp"}
           </button>
+          
         </div>
       </form>
     </div>
