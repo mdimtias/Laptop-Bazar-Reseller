@@ -27,6 +27,7 @@ const AddProduct = () => {
     const handleAddProduct =async (data)=>{
         const image = data.image[0];
         console.log(data)
+        return 
         const formData = new FormData();
         formData.append("image", image)
         
@@ -90,11 +91,11 @@ const AddProduct = () => {
                    
                     className="select input-bordered w-full max-w-xs">
                         {
-                            categories?.data?.map((category, i) => <option
+                            categories?.data?.map((category, i) => <><option
                                 key={i}
                                 value={category.name}
                                 
-                            >{category.name}</option>)
+                            >{category.name}</option> <input  {...register('id')} type="hidden" value={category.id} /></> )
                         }
                     </select>
                 </div>

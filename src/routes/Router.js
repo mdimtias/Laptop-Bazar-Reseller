@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import Course from "../Course/Course";
 import DashBoard from "../Layout/Dashboard/Dashboard";
 import Main from "../Layout/Main";
+import BlogDetail from "../Pages/Blogs/BlogDetail/BlogDetail";
+import Blogs from "../Pages/Blogs/Blogs/Blogs";
 import AddCategory from "../Pages/DashBoard/AddCategory/AddCategory";
 import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
 import AllCategory from "../Pages/DashBoard/AllCategory/AllCategory";
@@ -37,6 +40,19 @@ export const router = createBrowserRouter([
                 path: "/reset-password",
                 element: <ResetPassword></ResetPassword>
             }, 
+            {
+                path: "/course",
+                element: <Course></Course>
+            }, 
+            {
+                path: "/blogs",
+                element: <Blogs></Blogs>
+            },
+            {
+                path: "/blogs/:id",
+                element: <BlogDetail></BlogDetail>
+            }
+
         ]
     },
     {
