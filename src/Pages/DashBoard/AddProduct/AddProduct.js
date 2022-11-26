@@ -29,7 +29,6 @@ const AddProduct = () => {
     const handleAddProduct =async (data)=>{
         const image = data.image[0];
         console.log(data)
-        return 
         const formData = new FormData();
         formData.append("image", image)
         
@@ -88,20 +87,35 @@ const AddProduct = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Category</span></label>
+                    <label className="label"> <span className="label-text">Category Name</span></label>
                     <select {...register('categoryName')}
                    
                     className="select input-bordered w-full max-w-xs">
                         {
-                            categories?.data?.map((category, i) => <><option
-                                key={i}
+                            categories?.data?.map((category, i) => <option
+                                key={category.id}
                                 value={category.name}
                                 
-                            >{category.name}</option> <input  {...register('id')} type="hidden" value={category.id} /></> )
+                            >{category.name} </option>  )
+                           
                         }
                     </select>
                 </div>
-
+                <div className="form-control w-full max-w-xs">
+                <label className="label"> <span className="label-text">Category Id</span></label>
+                <select {...register('id')}
+                   className="select input-bordered w-full max-w-xs">
+                    <option disabled defaultValue="Select Category Id Carefully">Select Category Id Carefully</option>
+                       {
+                           categories?.data?.map((category, i) => <option
+                               key={i}
+                               value={category.id}
+                               
+                           >{category.id} </option>  )
+                          
+                       }
+                   </select>
+                </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Processor</span></label>
                     <input type="text" {...register("processor")} className="input input-bordered w-full max-w-xs" placeholder='Processor' />
@@ -146,7 +160,11 @@ const AddProduct = () => {
                     <input type="text" {...register("cpu_cache")} className="input input-bordered w-full max-w-xs" placeholder='Cpu Cache' />
                     {errors.cpu_cache && <p className='text-red-500'>{errors.cpu_cache.message}</p>}
                 </div>
-
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">CPU Cache</span></label>
+                    <input type="text" {...register("years_of_use")} className="input input-bordered w-full max-w-xs" placeholder='Years Of Use Product' />
+                    {errors.years_of_use && <p className='text-red-500'>{errors.years_of_use.message}</p>}
+                </div>
             </div>
 
             <h2 className="font-bold">Display</h2>

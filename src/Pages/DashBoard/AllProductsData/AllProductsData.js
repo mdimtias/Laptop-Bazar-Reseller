@@ -17,7 +17,6 @@ const AllProductsData = () => {
       return data;
     },
   });
-
   const handleDeleteProduct = (product)=>{
         fetch(`http://localhost:8000/products/${product._id}`, {
             method: "DELETE",
