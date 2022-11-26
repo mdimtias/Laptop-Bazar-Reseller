@@ -38,7 +38,7 @@ const Registration = () => {
     formData.append("image", image);
     const imageUploadServer = await ImgUpload(formData);
     // User Data Object
-    const userData = { name: name, email: email };
+    const userData = { name: name, email: email, role: accountType };
     console.log(accountType, name, email, password, formData);
     // Create User Database
     const createUserDb = async (email) => {
@@ -116,7 +116,7 @@ const Registration = () => {
                   type="radio"
                   name="accountType"
                   className="radio radio-info"
-                  value="user"
+                  value="buyer"
                   defaultChecked
                 />
               </label>

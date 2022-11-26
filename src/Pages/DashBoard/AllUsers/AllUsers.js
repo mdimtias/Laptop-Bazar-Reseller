@@ -1,42 +1,80 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import useTitle from "../../../hooks/useTitle";
 
 const AllUsers = () => {
-  useTitle("All Users")
-    const { data: users = [], refetch } = useQuery({
-        queryKey: ["users"],
-        queryFn: async () => {
-          const res = await fetch("http://localhost:8000/users", {
-            headers: {
-                authorization: localStorage.getItem("token")
-            }
-          });
-          const data = await res.json();
-          return data;
+  useTitle("All Users");
+  const [userRole, setUserRole] = useState("");
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users", userRole],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:8000/users/${userRole}`, {
+        headers: {
+          authorization: localStorage.getItem("token"),
         },
       });
-      const handleMakeAdmin = (id)=>{
-        console.log(id)
-        fetch(`http://localhost:8000/users/admin/${id}`, {
-            method: "PUT",
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  const handleMakeAdmin = (id) => {
+    console.log(id);
+    fetch(`http://localhost:8000/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.matchedCount > 0) {
+          toast.success("Make Admin Successful");
+          refetch();
+        }
+      });
+  };
+
+  const handleUser = (e) => {
+    setUserRole(e.target.value);
+  };
+
+  const handleDeleteUser = (user)=>{
+    fetch(`http://localhost:8000/users/${user._id}`, {
+            method: "DELETE",
             headers: {
                 authorization: localStorage.getItem("token")
             }
         })
         .then(res=>res.json())
         .then(data=>{
-            if(data.matchedCount>0){
-                toast.success("Make Admin Successful")
-                refetch()
+            if(data.data.acknowledged){
+                toast.success(`Successfully Delete ${user.name}`)
+                refetch();
             }
         })
-      }
-    return (
-        <div>
+        .catch(error=>{
+            console.log(error);
+            toast.error("Data Delete Fail");
+        })
+  }
+  return (
+    <div>
       <h2 className="text-3xl mb-5">All user</h2>
       <div className="overflow-x-auto">
+        <select
+          className="select select-bordered w-full max-w-xs"
+          onChange={handleUser}
+        >
+          <option defaultValue="none" disabled>
+            Filter User
+          </option>
+          <option value="">All User</option>
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+        </select>
         <table className="table w-full">
           <thead>
             <tr>
@@ -53,15 +91,28 @@ const AllUsers = () => {
                 <th>{i + 1}</th>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>
-                <td>{user?.role !== "admin" ? <button onClick={()=>handleMakeAdmin(user._id)} className="btn btn-xs btn-primary">Make Admin</button> : <></>}</td>
-                <td><button className="btn btn-xs btn-danger">Delete</button></td>
+                <td>
+                  {user?.role !== "admin" ? (
+                    <button
+                      onClick={() => handleMakeAdmin(user._id)}
+                      className="btn btn-xs btn-primary"
+                    >
+                      Make Admin
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </td>
+                <td>
+                  <button className="btn btn-xs btn-danger" onClick={()=>handleDeleteUser(user)}>Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
-    );
+  );
 };
 
 export default AllUsers;
