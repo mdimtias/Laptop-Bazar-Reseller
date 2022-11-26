@@ -4,10 +4,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { ImgUpload } from '../../../hooks/ImgUpload';
+import useTitle from '../../../hooks/useTitle';
 // import Loading from '../../Shared/Loading/Loading';
 import "./AddProduct.css";
 
 const AddProduct = () => {
+    useTitle("Add Product")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     

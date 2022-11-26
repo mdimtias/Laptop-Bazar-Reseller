@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 import logo from "./../../../assets/Logo/errorLogoSize.png";
 
 const ErrorPage = () => {
+    useTitle("404 Error")
   return (
     <div className="min-w-screen min-h-screen bg-blue-100 flex items-center p-5 lg:p-20 overflow-hidden relative">
     <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">

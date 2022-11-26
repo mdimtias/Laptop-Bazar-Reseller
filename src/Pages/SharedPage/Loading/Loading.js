@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../../hooks/useTitle";
 
 const Loading = () => {
+  useTitle("Loading")
   return (
     <div className="flex justify-center items-center">
       <div

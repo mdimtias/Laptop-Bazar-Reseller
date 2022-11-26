@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import useTitle from '../../../hooks/useTitle';
 import Blog from '../Blog/Blog';
 import "./Blogs.css";
 
 const Blogs = () => {
+    useTitle("Blogs")
     const { data: blogs=[], isLoading } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
@@ -19,7 +21,6 @@ const Blogs = () => {
     if(isLoading){
         return
     }
-    console.log(blogs)
     return (
         <div className='container mx-auto'>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

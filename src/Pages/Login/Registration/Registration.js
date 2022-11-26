@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { ImgUpload } from "../../../hooks/ImgUpload";
+import useTitle from "../../../hooks/useTitle";
 import Loading from "../../SharedPage/Loading/Loading";
 
 const Registration = () => {
+  useTitle("Registration")
   const { user } = useContext(AuthContext);
   const { createUser, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false)

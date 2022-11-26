@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 const BlogDetail = () => {
     const {id} = useParams()
@@ -18,11 +19,11 @@ const BlogDetail = () => {
     })
     console.log(blog.data[0])
     const {title, description, author_img, author_name, published_date, thumbnail_image} = blog.data[0];
-    console.log(title)
+    useTitle(title)
     if(isLoading){
         return
     }
-    console.log(id)
+    
   return (
     <div className="container mx-auto">
       <div className="grid-cols-1">
