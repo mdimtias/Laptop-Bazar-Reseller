@@ -61,7 +61,7 @@ const AllProductsData = () => {
                     </div>
                   </div>
                 </th>
-                <td>{product?.name}</td>
+                <td>{product?.product_name}</td>
                 <td>
                   <button className="btn btn-xs btn-danger" onClick={()=>handleDeleteProduct(product)}>Delete</button>
                 </td>

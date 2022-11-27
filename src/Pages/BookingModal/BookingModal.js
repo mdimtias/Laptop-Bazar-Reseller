@@ -20,6 +20,7 @@ const BookingModal = ({ bookingModalData, setBookingModalData }) => {
         product_name: bookingModalData?.product_name,
         price: bookingModalData?.sale_price,
         meeting_location,
+        image: bookingModalData?.image,
         phone
     }
     console.log(orderData)
@@ -59,8 +60,9 @@ const BookingModal = ({ bookingModalData, setBookingModalData }) => {
           <h3 className="text-lg font-bold">Order Form</h3>
           <form
             onSubmit={handleOrder}
-            className="grid grid-cols-1 gap-3 mt-10"
+            className="grid grid-cols-1 gap-2 mt-1"
           >
+            <div className="flex justify-center items-center"><img src={bookingModalData?.image} alt="" className="w-[75px]" /></div>
             <h3 name="product_name" className="font-bold text-base">Product: {bookingModalData?.product_name}</h3>
             <input
               name="price"
@@ -93,13 +95,15 @@ const BookingModal = ({ bookingModalData, setBookingModalData }) => {
                 type="text"
                 placeholder="Meeting Location"
                 className="input w-full input-bordered"
+                required
               />
 
               <input
                 name="phone"
-                type="text"
+                type="number"
                 placeholder="Phone"
                 className="input w-full input-bordered"
+                required
               />
             <input
               type="submit"

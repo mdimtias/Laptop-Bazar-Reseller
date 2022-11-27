@@ -41,6 +41,23 @@ const AllUsers = () => {
     setUserRole(e.target.value);
   };
 
+// Verify Seller
+const handleVerifyUser = (user)=>{
+    fetch(`http://localhost:8000/users/seller/${user?._id}`, {
+      method: "PUT",
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.matchedCount > 0) {
+          toast.success("Make Seller Verified Successful");
+          refetch();
+        }
+      });
+}
+  // Delete User
   const handleDeleteUser = (user)=>{
     fetch(`http://localhost:8000/users/${user._id}`, {
             method: "DELETE",
@@ -60,6 +77,7 @@ const AllUsers = () => {
             toast.error("Data Delete Fail");
         })
   }
+
   return (
     <div>
       <h2 className="text-3xl mb-5">All user</h2>
@@ -82,6 +100,12 @@ const AllUsers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Admin</th>
+             {
+              userRole === "seller" && <>
+               <th>Status</th>
+              <th>Verify</th>
+              </>
+             }
               <th>Delete</th>
             </tr>
           </thead>
@@ -103,6 +127,12 @@ const AllUsers = () => {
                     <></>
                   )}
                 </td>
+                {
+                  userRole === "seller" && <>
+                  <td>{user?.status || "unverified"}</td>
+                  <td><button onClick={()=>handleVerifyUser(user)} className="btn btn-xs btn-secondary">Verify</button></td>
+                  </>
+                }
                 <td>
                   <button className="btn btn-xs btn-danger" onClick={()=>handleDeleteUser(user)}>Delete</button>
                 </td>

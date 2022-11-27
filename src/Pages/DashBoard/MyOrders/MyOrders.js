@@ -16,9 +16,10 @@ const MyOrders = () => {
           return data;
         },
       });
+      console.log(orders);
     return (
         <div>
-        <h2 className="text-3xl mb-5">All user</h2>
+        <h2 className="text-3xl mb-5">My Orders</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -34,8 +35,8 @@ const MyOrders = () => {
               {orders?.data?.map((order, i) => (
                 <tr key={order._id}>
                   <th>{i + 1}</th>
-                  <td>{order?.image}</td>
-                  <td>{order?.product_title}</td>
+                  <td><img src={order?.image} alt="" className='w-[75px]' /></td>
+                  <td>{order?.product_name}</td>
                   <td>{order?.price}</td>
                   <td>Pay</td>
                 </tr>
