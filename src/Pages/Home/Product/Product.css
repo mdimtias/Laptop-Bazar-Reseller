@@ -57,3 +57,7 @@
 .active {
     color: #3BB77E !important;
 }
+.use_and_location{
+    color: #606060;
+    font-weight: bold;
+}

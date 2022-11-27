@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import "./Category.css";
 
-const Category = ({name, logo, totalProduct}) => {
-
+const CategoryItem = ({name, logo, totalProduct, id}) => {
     return (
-        <div className='single-category flex flex-col justify-between items-center p-3'>
+       
+         <div className='single-category flex flex-col justify-between items-center p-3'>
+            <Link to={`category/${id}`}>
             <div className="single-category-img">
                 <img src={logo} alt="" />
             </div>
@@ -12,8 +14,10 @@ const Category = ({name, logo, totalProduct}) => {
                 <h2 className="single-category-name font-bold text-lg">{name}</h2>
                 <p className="total-items text-md">{totalProduct} items</p>
             </div>
+            
+       </Link>
         </div>
     );
 };
 
-export default Category;
+export default CategoryItem;

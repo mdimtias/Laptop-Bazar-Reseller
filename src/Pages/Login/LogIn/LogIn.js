@@ -1,10 +1,13 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Google from './../../../assets/LogIn/google.png'
 
 const Login = () => {
-    const {signIn, user} = useContext(AuthContext)
+    const {signIn, user, providerLogin} = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider()
     const navigate = useNavigate();
     useEffect(() => {
       if (user) {
@@ -20,7 +23,7 @@ const Login = () => {
         const password = form.password.value;
         signIn(email, password)
         .then(async () => {
-             fetch(`http://localhost:5000/users/${email}`,{
+             fetch(`http://localhost:8000/users/${email}`,{
                     method: "PUT",
                     headers: {
                       "content-type": "application/json"
@@ -35,6 +38,32 @@ const Login = () => {
         .catch(err=>{
             console.log(err.message)
             toast.error("LogIn Fail")})
+    }
+
+    const handleFacebookLogIn = ()=>{
+      providerLogin(googleProvider)
+      .then(data=>{
+        const userData = {
+          name: data?.user?.displayName,
+          email: data?.user?.email
+        }
+        fetch(`http://localhost:8000/users/${data?.user?.email}`,{
+          method: "PUT",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(userData)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+          localStorage.setItem("token", `bearer ${data.token}`)
+      })
+       toast.success("LogIn Successful")
+      })
+      .catch(error=>{
+        toast.error("Login Fail! Please Try Again")
+      })
+
     }
     return (
         <div className="d-flex justify-center items-center p-12">
@@ -59,6 +88,10 @@ const Login = () => {
         <button className="btn w-full max-w-xs">Log In</button>
         </div>
       </form>
+      <div className="social-login">
+        <h6 className='text-center py-3 font-bold text-[#999999]'>Or</h6>
+        <button onClick={handleFacebookLogIn}><img src={Google} alt="" /></button>
+      </div>
     </div>
     );
 };

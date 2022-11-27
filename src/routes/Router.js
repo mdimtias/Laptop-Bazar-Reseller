@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Course from "../Course/Course";
 import DashBoard from "../Layout/Dashboard/Dashboard";
 import Main from "../Layout/Main";
 import BlogDetail from "../Pages/Blogs/BlogDetail/BlogDetail";
 import Blogs from "../Pages/Blogs/Blogs/Blogs";
+import Category from "../Pages/Category/Category";
 import AddCategory from "../Pages/DashBoard/AddCategory/AddCategory";
 import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
 import AllCategory from "../Pages/DashBoard/AllCategory/AllCategory";
 import AllProductsData from "../Pages/DashBoard/AllProductsData/AllProductsData";
 import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
-import AllProducts from "../Pages/Home/AllProducts/AllProducts";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/Login/LogIn/LogIn";
 import Registration from "../Pages/Login/Registration/Registration";
@@ -41,16 +40,16 @@ export const router = createBrowserRouter([
                 element: <ResetPassword></ResetPassword>
             }, 
             {
-                path: "/course",
-                element: <Course></Course>
-            }, 
-            {
                 path: "/blogs",
                 element: <Blogs></Blogs>
             },
             {
                 path: "/blogs/:id",
                 element: <BlogDetail></BlogDetail>
+            },
+            {
+                path: "/category/:id",
+                element: <Category></Category>
             }
 
         ]

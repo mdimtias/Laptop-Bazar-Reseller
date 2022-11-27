@@ -39,7 +39,7 @@ const AllProductsData = () => {
   return (
     <div className="grid grid-cols-1">
         <div>
-      <h2 className="text-3xl mb-5">All user</h2>
+      <h2 className="text-3xl mb-5">All Products</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

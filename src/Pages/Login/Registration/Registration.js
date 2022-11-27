@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -5,10 +6,12 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { ImgUpload } from "../../../hooks/ImgUpload";
 import useTitle from "../../../hooks/useTitle";
 import Loading from "../../SharedPage/Loading/Loading";
+import Google from './../../../assets/LogIn/google.png'
 
 const Registration = () => {
+  const googleProvider = new GoogleAuthProvider()
   useTitle("Registration")
-  const { user } = useContext(AuthContext);
+  const { user, providerLogin } = useContext(AuthContext);
   const { createUser, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
@@ -17,8 +20,6 @@ const Registration = () => {
       navigate("/");
     }
   }, [navigate, user]);
-
-  console.log(loading)
  
   const signUpHandler = async (e) => {
     
@@ -66,6 +67,33 @@ const Registration = () => {
       })
       .catch((err) => toast.error("Account Create Fail"));
   };
+
+ // Social Login
+  const handleFacebookLogIn = ()=>{
+    providerLogin(googleProvider)
+    .then(data=>{
+      const userData = {
+        name: data?.user?.displayName,
+        email: data?.user?.email
+      }
+      fetch(`http://localhost:8000/users/${data?.user?.email}`,{
+        method: "PUT",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        localStorage.setItem("token", `bearer ${data.token}`)
+    })
+     toast.success("LogIn Successful")
+    })
+    .catch(error=>{
+      toast.error("Login Fail! Please Try Again")
+    })
+
+  }
   return (
     <div className="d-flex justify-center items-center p-12">
       <form action="" onSubmit={signUpHandler}>
@@ -141,6 +169,10 @@ const Registration = () => {
           
         </div>
       </form>
+      <div className="social-login">
+        <h6 className='text-center py-3 font-bold text-[#999999]'>Or</h6>
+        <button onClick={handleFacebookLogIn}><img src={Google} alt="" /></button>
+      </div>
     </div>
   );
 };

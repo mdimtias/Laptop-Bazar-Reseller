@@ -28,13 +28,11 @@ const AddProduct = () => {
 
     const handleAddProduct =async (data)=>{
         const image = data.image[0];
-        console.log(data)
         const formData = new FormData();
         formData.append("image", image)
         
         const imageUpload = await ImgUpload(formData)
         data.image = imageUpload;
-        console.log(data.image)
         fetch("http://localhost:8000/products", {
                         method: "POST",
                         headers: {
@@ -46,7 +44,6 @@ const AddProduct = () => {
                     .then(res=>res.json())
                     .then(data=>{
                         toast.success(`Product Added successful`)
-                        console.log(data)
                         navigate("/dashboard/products")
                     })
                     .catch(error=>{
@@ -161,7 +158,7 @@ const AddProduct = () => {
                     {errors.cpu_cache && <p className='text-red-500'>{errors.cpu_cache.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">CPU Cache</span></label>
+                    <label className="label"> <span className="label-text">Years Of Use Product</span></label>
                     <input type="text" {...register("years_of_use")} className="input input-bordered w-full max-w-xs" placeholder='Years Of Use Product' />
                     {errors.years_of_use && <p className='text-red-500'>{errors.years_of_use.message}</p>}
                 </div>

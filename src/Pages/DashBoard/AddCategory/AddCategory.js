@@ -7,6 +7,7 @@ import { ImgUpload } from '../../../hooks/ImgUpload';
 import useTitle from '../../../hooks/useTitle';
 
 const AddCategory = (data) => {
+    const navigate = useNavigate();
     useTitle("Add Category")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { data: categories=[] } = useQuery({
@@ -45,7 +46,8 @@ const AddCategory = (data) => {
         .then(data=>{
             console.log(data.data)
             if(data.data.acknowledged){
-                toast.success("Category Created Successful")
+                toast.success("Category Created Successful");
+                navigate("/")
             }
             
         })

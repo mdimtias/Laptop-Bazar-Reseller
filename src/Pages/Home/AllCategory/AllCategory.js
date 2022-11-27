@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Category from '../Category/Category';
+import CategoryItem from '../Category/CategoryItem';
 
 const AllCategory = () => {
    
@@ -42,7 +42,7 @@ const AllCategory = () => {
                  categories?.data?.map(category=>{
                     const lengthPd = products?.data?.filter(pd=>pd.categoryName === category.name)
                     const productLength = lengthPd?.length;
-                        return <Category name={category.name} logo={category.logo} key={category._id} totalProduct={productLength}></Category>
+                        return <CategoryItem id={category.id} name={category.name} logo={category.logo} key={category._id} totalProduct={productLength}></CategoryItem>
                     })
                 }
             </div>

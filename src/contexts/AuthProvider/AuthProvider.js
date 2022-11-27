@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -28,6 +28,11 @@ const AuthProvider = ({children}) => {
             photoURL: photo,
         });
     }
+   // Social Login
+    const providerLogin = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    }
 
     // Reset Password 
     const resetPassword = (email)=>{
@@ -55,6 +60,7 @@ const AuthProvider = ({children}) => {
         signIn,
         updateUser,
         resetPassword,
+        providerLogin,
         logOut,
         user,
         loading,
