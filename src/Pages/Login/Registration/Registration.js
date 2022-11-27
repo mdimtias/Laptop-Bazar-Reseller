@@ -74,7 +74,8 @@ const Registration = () => {
     .then(data=>{
       const userData = {
         name: data?.user?.displayName,
-        email: data?.user?.email
+        email: data?.user?.email,
+        role: "buyer"
       }
       fetch(`http://localhost:8000/users/${data?.user?.email}`,{
         method: "PUT",

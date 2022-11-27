@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { ImgUpload } from '../../../hooks/ImgUpload';
 import useTitle from '../../../hooks/useTitle';
 // import Loading from '../../Shared/Loading/Loading';
@@ -12,7 +13,7 @@ const AddProduct = () => {
     useTitle("Add Product")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    
+    const {user} = useContext(AuthContext)
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
@@ -27,6 +28,8 @@ const AddProduct = () => {
     })
 
     const handleAddProduct =async (data)=>{
+        data.email = user?.email;
+        data.seller = user?.displayName;
         const image = data.image[0];
         const formData = new FormData();
         formData.append("image", image)
@@ -44,7 +47,7 @@ const AddProduct = () => {
                     .then(res=>res.json())
                     .then(data=>{
                         toast.success(`Product Added successful`)
-                        navigate("/dashboard/products")
+                        navigate("/dashboard/my-products")
                     })
                     .catch(error=>{
                         toast.success(`Product Added Fail`)
@@ -58,10 +61,10 @@ const AddProduct = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="form-control max-w-xs">
                     <label className="label"> <span className="label-text">Product Name</span></label>
-                    <input type="text" {...register("name", {
+                    <input type="text" {...register("product_name", {
                         required: "Product Name is Required"
                     })} className="input input-bordered w-full max-w-xs" placeholder='Product title' />
-                    {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                    {errors.product_name && <p className='text-red-500'>{errors.product_name.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Photo</span></label>
@@ -85,18 +88,33 @@ const AddProduct = () => {
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Category Name</span></label>
-                    <select {...register('categoryName')}
-                   
+                    <select {...register('categoryName', {
+                        required: "Category Name is Required"
+                    })}
                     className="select input-bordered w-full max-w-xs">
+                        {/* <option value="select" defaultSelected >Select Category</option> */}
                         {
+                            
                             categories?.data?.map((category, i) => <option
                                 key={category.id}
                                 value={category.name}
                                 
-                            >{category.name} </option>  )
-                           
+                            >{category.name} </option>
+                             )
                         }
                     </select>
+                    {errors.categoryName && <p className='text-red-500'>{errors.categoryName.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Condition Type</span></label>
+                    <select name="" id="" {...register('condition_type', {
+                        required: "Condition type is Required"
+                    })} className="select input-bordered w-full max-w-xs">
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                    {errors.condition_type && <p className='text-red-500'>{errors.condition_type.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                 <label className="label"> <span className="label-text">Category Id</span></label>
@@ -162,6 +180,17 @@ const AddProduct = () => {
                     <input type="text" {...register("years_of_use")} className="input input-bordered w-full max-w-xs" placeholder='Years Of Use Product' />
                     {errors.years_of_use && <p className='text-red-500'>{errors.years_of_use.message}</p>}
                 </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Location</span></label>
+                    <input type="text" {...register("location")} className="input input-bordered w-full max-w-xs" placeholder='Location' />
+                    {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Date Of Post</span></label>
+                    <input type="text" {...register("posted_date")} className="input input-bordered w-full max-w-xs" placeholder='Post Date' />
+                    {errors.posted_date && <p className='text-red-500'>{errors.posted_date.message}</p>}
+                </div>
+
             </div>
 
             <h2 className="font-bold">Display</h2>

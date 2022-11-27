@@ -27,7 +27,7 @@ const Category = () => {
     return (
         <div className='container mx-auto py-10'>
             <h2 className='font-bold text-3xl py-5'>{category?.data[0]?.categoryName}</h2>
-         <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-4 xl:grid-cols-5">
+         <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-3 xl:grid-cols-4">
              {
                 category?.data?.map((product)=>
                 <Product key={product._id} product={product}  setBookingModalData={setBookingModalData}></Product>

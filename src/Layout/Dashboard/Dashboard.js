@@ -22,12 +22,37 @@ const DashBoard = () => {
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+          {/* Buyer access route */}
             {role === "buyer" && (
-              <li>
-                <Link to="/dashboard"> Dashboard</Link>
-              </li>
+             <>
+                <li>
+                  <Link to="/dashboard"> Dashboard</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/my-orders"> My Orders</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/my-wishlist"> My Wishlist</Link>
+                </li>
+             </>
             )}
+ 
+            {/* Seller access route*/}
+          {
+            role === "seller" && (
+              <>
+                <li>
+                  <Link to="/dashboard/add-product"> Add Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/my-products"> My Product</Link>
+                </li>
 
+              </>
+            )
+          }
+
+          {/* Admin access route*/}
             {role === "admin" && (
               <>
                 <li>

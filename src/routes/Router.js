@@ -9,6 +9,9 @@ import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
 import AllCategory from "../Pages/DashBoard/AllCategory/AllCategory";
 import AllProductsData from "../Pages/DashBoard/AllProductsData/AllProductsData";
 import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
+import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
+import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
+import MyWishlist from "../Pages/DashBoard/MyWishlist/MyWishlist";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/Login/LogIn/LogIn";
 import Registration from "../Pages/Login/Registration/Registration";
@@ -49,7 +52,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/category/:id",
-                element: <Category></Category>
+                element: <PrivateRoute><Category></Category></PrivateRoute>
             }
 
         ]
@@ -69,7 +72,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/add-product",
-                element: <AdminRoute><PrivateRoute><AddProduct></AddProduct></PrivateRoute></AdminRoute>
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
             },
             {
                 path: "/dashboard/users",
@@ -83,6 +86,18 @@ export const router = createBrowserRouter([
                 path: "/dashboard/add-category",
                 element: <AdminRoute><PrivateRoute> <AddCategory></AddCategory></PrivateRoute></AdminRoute>
             },
+            {
+                path: "/dashboard/my-orders",
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+            },
+            {
+                path: "/dashboard/my-products",
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
+            },
+            {
+                path: "/dashboard/my-wishlist",
+                element: <PrivateRoute><MyWishlist></MyWishlist> </PrivateRoute>
+            }
         ]
     }
 ])

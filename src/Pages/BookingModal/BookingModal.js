@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
-const BookingModal = ({ bookingModalData }) => {
+const BookingModal = ({ bookingModalData, setBookingModalData }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const handleOrder = (event) => {
@@ -22,6 +23,26 @@ const BookingModal = ({ bookingModalData }) => {
         phone
     }
     console.log(orderData)
+
+    fetch("http://localhost:8000/orders", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            authorization: localStorage.getItem("token")
+        },
+        body: JSON.stringify(orderData)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        toast.success(`Successfully place your order!`)
+        setBookingModalData(null)
+    })
+    .catch(error=>{
+        toast.success(`Order Place Fail`)
+        console.log(error)
+        setBookingModalData(null)
+    })
+
   };
 
   return (

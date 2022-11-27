@@ -1,10 +1,37 @@
-import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import BookingModal from "../../BookingModal/BookingModal";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import "./Product.css";
 
 const Product = ({ product, setBookingModalData }) => {
-  
+  const {user} = useContext(AuthContext);
+
+  const handleWishlist = async (e)=>{
+    e.preventDefault();
+    const wishlistProduct = {...product, wishlistEmail: user?.email};
+
+    const res = await fetch(`http://localhost:8000/wishlist/${product?._id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify(wishlistProduct)
+      });
+      const data = await res.json();
+      
+      if(data.data.upsertedCount>0){
+        toast.success("Add Wishlist successful")
+        return 
+      }
+
+      if(data.success === false){
+        toast.success("This product already exist wishlist")
+        return 
+      }
+  }
   
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -35,8 +62,14 @@ const Product = ({ product, setBookingModalData }) => {
           <Link to=""> {product?.brand}</Link>
         </div>
         <div className="use_and_location flex justify-between">
-          <span>{product?.years_of_use} Years Use</span>
+          <span>{product?.years_of_use} Years Of Use</span>
           <h3>{product?.location}</h3>
+        </div>
+        <div className="seller-info flex justify-between">
+          <h3>{product?.seller}</h3>
+          <div className="post_date_time">
+          <p>{product?.posted_date} {product?.posted_time} </p>
+          </div>
         </div>
         <div className="product-card-bottom flex justify-between">
           <div className="product-price">
@@ -44,19 +77,23 @@ const Product = ({ product, setBookingModalData }) => {
             <span className="old-price">$ {product?.sale_price}</span>
           </div>
           <div className="add-card">
-            {/* <Link to="/" className="add" htmlFor="booking-modal">Buy Now</Link> */}
+            <label
+             className="add"
+             onClick={handleWishlist}
+            >
+             Add Wishlist
+            </label>
+          </div>
+        </div>
+        <div className="add-card">
             <label
              htmlFor="booking-modal"
              className="add"
              onClick={() => setBookingModalData(product)}
             >
-              open modal
+             Book Now
             </label>
           </div>
-          {/* {bookingModalData && <BookingModal
-          product={bookingModalData}
-          ></BookingModal>} */}
-        </div>
       </div>
     </div>
   );
