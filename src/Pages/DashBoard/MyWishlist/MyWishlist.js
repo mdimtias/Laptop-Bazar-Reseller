@@ -53,7 +53,7 @@ const MyWishlist = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>Sl</th>
+              <th>SN</th>
               <th>Image</th>
               <th>Product Name</th>
               <th>Category</th>

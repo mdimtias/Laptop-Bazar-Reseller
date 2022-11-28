@@ -33,6 +33,33 @@ const Product = ({ product, setBookingModalData }) => {
       }
   }
   
+
+  // Handle Report 
+  const handleReport = async (e)=>{
+    e.preventDefault();
+    const wishlistProduct = {...product, reportedEmail: user?.email, reportCount: 1};
+
+    const res = await fetch(`http://localhost:8000/reportedProduct/${product?._id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify(wishlistProduct)
+      });
+      const data = await res.json();
+      
+      if(data.data.upsertedCount>0){
+        toast.success("Add Report successful")
+        return 
+      }
+
+      if(data.success === false){
+        toast.success("Add Report successful")
+        return 
+      }
+  }
+
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
@@ -82,6 +109,12 @@ const Product = ({ product, setBookingModalData }) => {
              onClick={handleWishlist}
             >
              Add Wishlist
+            </label>
+            <label
+             className="add"
+             onClick={handleReport}
+            >
+             Report
             </label>
           </div>
         </div>

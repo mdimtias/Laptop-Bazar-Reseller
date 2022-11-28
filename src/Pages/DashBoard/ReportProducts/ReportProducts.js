@@ -1,13 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import React from 'react';
 
-const MyProducts = () => {
-    const {user} = useContext(AuthContext);
+const ReportProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:8000/products/${user?.email}`, {
+          const res = await fetch(`http://localhost:8000/reportedProduct`, {
             headers: {
               authorization: localStorage.getItem("token"),
             },
@@ -18,7 +16,7 @@ const MyProducts = () => {
       });
     return (
         <div>
-        <h2 className="text-3xl mb-5">My Products</h2>
+        <h2 className="text-3xl mb-5">Reported Products</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -49,4 +47,4 @@ const MyProducts = () => {
     );
 };
 
-export default MyProducts;
+export default ReportProducts;

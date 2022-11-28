@@ -44,7 +44,7 @@ const AllProductsData = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>Id</th>
+              <th>SN</th>
               <th>Image</th>
               <th>Name</th>
               <th>Delete</th>

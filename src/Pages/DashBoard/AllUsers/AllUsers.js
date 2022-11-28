@@ -96,7 +96,7 @@ const handleVerifyUser = (user)=>{
         <table className="table w-full">
           <thead>
             <tr>
-              <th>Sl</th>
+              <th>SN</th>
               <th>Name</th>
               <th>Email</th>
               <th>Admin</th>

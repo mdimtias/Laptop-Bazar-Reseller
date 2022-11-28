@@ -12,6 +12,7 @@ import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
 import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
 import MyWishlist from "../Pages/DashBoard/MyWishlist/MyWishlist";
+import ReportProducts from "../Pages/DashBoard/ReportProducts/ReportProducts";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/Login/LogIn/LogIn";
 import Registration from "../Pages/Login/Registration/Registration";
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/my-wishlist",
                 element: <PrivateRoute><MyWishlist></MyWishlist> </PrivateRoute>
+            },
+            {
+                path: "/dashboard/report-product",
+                element: <AdminRoute><PrivateRoute><ReportProducts></ReportProducts> </PrivateRoute></AdminRoute>
             }
         ]
     }

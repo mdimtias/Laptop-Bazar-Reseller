@@ -70,6 +70,9 @@ const DashBoard = () => {
                 <li>
                   <Link to="/dashboard/add-category"> Add Category</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/report-product"> Report Product</Link>
+                </li>
               </>
             )}
           </ul>
