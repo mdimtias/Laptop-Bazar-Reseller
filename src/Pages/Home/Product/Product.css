@@ -65,3 +65,20 @@
     color: #606060;
     font-weight: bold;
 }
+.report_product_btn{
+    background: rgba(55,75,185,.1);
+    color: #3749bb;
+    padding: 6px 20px 6px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.report_product_btn:hover{
+    background: #3749bb;
+    color: #fff;
+
+}
+.wishlist_btn{
+    background: #ef4a23 !important;
+    color: #ffffff !important;
+}

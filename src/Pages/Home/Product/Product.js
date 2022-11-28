@@ -6,59 +6,65 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import "./Product.css";
 
 const Product = ({ product, setBookingModalData }) => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  const handleWishlist = async (e)=>{
+  const handleWishlist = async (e) => {
     e.preventDefault();
-    const wishlistProduct = {...product, wishlistEmail: user?.email};
+    const wishlistProduct = { ...product, wishlistEmail: user?.email };
 
     const res = await fetch(`http://localhost:8000/wishlist/${product?._id}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-          authorization: localStorage.getItem("token"),
-        },
-        body: JSON.stringify(wishlistProduct)
-      });
-      const data = await res.json();
-      
-      if(data.data.upsertedCount>0){
-        toast.success("Add Wishlist successful")
-        return 
-      }
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(wishlistProduct),
+    });
+    const data = await res.json();
 
-      if(data.success === false){
-        toast.success("This product already exist wishlist")
-        return 
-      }
-  }
-  
+    if (data.data.upsertedCount > 0) {
+      toast.success("Add Wishlist successful");
+      return;
+    }
 
-  // Handle Report 
-  const handleReport = async (e)=>{
+    if (data.success === false) {
+      toast.success("This product already exist wishlist");
+      return;
+    }
+  };
+
+  // Handle Report
+  const handleReport = async (e) => {
     e.preventDefault();
-    const wishlistProduct = {...product, reportedEmail: user?.email, reportCount: 1};
+    const wishlistProduct = {
+      ...product,
+      reportedEmail: user?.email,
+      reportCount: 1,
+    };
 
-    const res = await fetch(`http://localhost:8000/reportedProduct/${product?._id}`, {
+    const res = await fetch(
+      `http://localhost:8000/reportedProduct/${product?._id}`,
+      {
         method: "PUT",
         headers: {
           "content-type": "application/json",
           authorization: localStorage.getItem("token"),
         },
-        body: JSON.stringify(wishlistProduct)
-      });
-      const data = await res.json();
-      
-      if(data.data.upsertedCount>0){
-        toast.success("Add Report successful")
-        return 
+        body: JSON.stringify(wishlistProduct),
       }
+    );
+    const data = await res.json();
 
-      if(data.success === false){
-        toast.success("Add Report successful")
-        return 
-      }
-  }
+    if (data.data.upsertedCount > 0) {
+      toast.success("Add Report successful");
+      return;
+    }
+
+    if (data.success === false) {
+      toast.success("Add Report successful");
+      return;
+    }
+  };
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -95,7 +101,9 @@ const Product = ({ product, setBookingModalData }) => {
         <div className="seller-info flex justify-between">
           <h3>{product?.seller}</h3>
           <div className="post_date_time">
-          <p>{product?.posted_date} {product?.posted_time} </p>
+            <p>
+              {product?.posted_date} {product?.posted_time}{" "}
+            </p>
           </div>
         </div>
         <div className="product-card-bottom flex justify-between">
@@ -104,29 +112,23 @@ const Product = ({ product, setBookingModalData }) => {
             <span className="old-price">$ {product?.sale_price}</span>
           </div>
           <div className="add-card">
-            <label
-             className="add"
-             onClick={handleWishlist}
-            >
-             Add Wishlist
-            </label>
-            <label
-             className="add"
-             onClick={handleReport}
-            >
-             Report
-            </label>
+            <button className="report_product_btn" onClick={handleReport}>
+              Report
+            </button>
           </div>
         </div>
-        <div className="add-card">
-            <label
-             htmlFor="booking-modal"
-             className="add"
-             onClick={() => setBookingModalData(product)}
-            >
-             Book Now
-            </label>
-          </div>
+        <div className="add-card flex justify-between items-center">
+          <button className="add wishlist_btn" onClick={handleWishlist}>
+            Add Wishlist
+          </button>
+          <label
+            htmlFor="booking-modal"
+            className="add"
+            onClick={() => setBookingModalData(product)}
+          >
+            Book Now
+          </label>
+        </div>
       </div>
     </div>
   );
