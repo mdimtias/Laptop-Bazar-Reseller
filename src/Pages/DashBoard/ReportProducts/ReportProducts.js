@@ -5,7 +5,7 @@ const ReportProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:8000/reportedProduct`, {
+          const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/reportedProduct`, {
             headers: {
               authorization: localStorage.getItem("token"),
             },

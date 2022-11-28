@@ -11,7 +11,7 @@ const Category = () => {
     const { data: category = [], refetch, isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:8000/category/${id}`, {
+          const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/category/${id}`, {
             headers: {
               authorization: localStorage.getItem("token"),
             },

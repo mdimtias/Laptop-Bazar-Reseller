@@ -9,7 +9,7 @@ const Newsletter = () => {
         const form = e.target;
         const email = form.email.value;
         
-        fetch(`http://localhost:8000/subscribe/${email}`, {
+        fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/subscribe/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

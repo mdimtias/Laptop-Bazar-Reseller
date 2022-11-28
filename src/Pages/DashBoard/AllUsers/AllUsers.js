@@ -10,7 +10,7 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", userRole],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/users/${userRole}`, {
+      const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${userRole}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -22,7 +22,7 @@ const AllUsers = () => {
 
   const handleMakeAdmin = (id) => {
     console.log(id);
-    fetch(`http://localhost:8000/users/admin/${id}`, {
+    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: localStorage.getItem("token"),
@@ -43,7 +43,7 @@ const AllUsers = () => {
 
 // Verify Seller
 const handleVerifyUser = (user)=>{
-    fetch(`http://localhost:8000/users/seller/${user?._id}`, {
+    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/seller/${user?._id}`, {
       method: "PUT",
       headers: {
         authorization: localStorage.getItem("token"),
@@ -59,7 +59,7 @@ const handleVerifyUser = (user)=>{
 }
   // Delete User
   const handleDeleteUser = (user)=>{
-    fetch(`http://localhost:8000/users/${user._id}`, {
+    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${user._id}`, {
             method: "DELETE",
             headers: {
                 authorization: localStorage.getItem("token")

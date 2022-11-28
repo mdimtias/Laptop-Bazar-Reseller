@@ -8,7 +8,7 @@ const AllProducts = () => {
     const { data: products=[] } = useQuery({
         queryKey: ['product'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:8000/products', {
+            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/products', {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }
@@ -21,7 +21,7 @@ const AllProducts = () => {
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:8000/category', {
+            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/category', {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }
@@ -50,9 +50,6 @@ const AllProducts = () => {
                     products?.data?.slice(0, 24).map(product=><Product key={product._id} product={product}></Product>)
                 }
             </div>
-            {/* {bookingModalData &&  */}
-           
-       
         </div>
     );
 };

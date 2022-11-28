@@ -15,7 +15,7 @@ const MyWishlist = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/wishlist/${user?.email}`, {
+      const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/wishlist/${user?.email}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -28,7 +28,7 @@ const MyWishlist = () => {
     return <Loading></Loading>;
   }
   const handleDeleteWishlist = (wishlist) => {
-    fetch(`http://localhost:8000/wishlist/${wishlist.product_name}`, {
+    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/wishlist/${wishlist.product_name}`, {
       method: "DELETE",
       headers: {
         authorization: localStorage.getItem("token"),

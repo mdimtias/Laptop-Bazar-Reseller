@@ -18,7 +18,7 @@ const AddProduct = () => {
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:8000/category', {
+            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/category', {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }
@@ -37,7 +37,7 @@ const AddProduct = () => {
         
         const imageUpload = await ImgUpload(formData)
         data.image = imageUpload;
-        fetch("http://localhost:8000/products", {
+        fetch("https://assignment-12-server-developertanbir-gmailcom.vercel.app/products", {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",

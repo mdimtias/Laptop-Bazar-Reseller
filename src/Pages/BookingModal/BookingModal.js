@@ -24,7 +24,7 @@ const BookingModal = ({ bookingModalData, setBookingModalData }) => {
         phone
     }
 
-    fetch("http://localhost:8000/orders", {
+    fetch("https://assignment-12-server-developertanbir-gmailcom.vercel.app/orders", {
         method: "POST",
         headers: {
             "content-type": "application/json",

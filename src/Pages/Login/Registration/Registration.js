@@ -43,7 +43,7 @@ const Registration = () => {
     console.log(accountType, name, email, password, formData);
     // Create User Database
     const createUserDb = async (email) => {
-      await fetch(`http://localhost:8000/users/${email}`, {
+      await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -77,7 +77,7 @@ const Registration = () => {
         email: data?.user?.email,
         role: "buyer"
       }
-      fetch(`http://localhost:8000/users/${data?.user?.email}`,{
+      fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${data?.user?.email}`,{
         method: "PUT",
         headers: {
           "content-type": "application/json"

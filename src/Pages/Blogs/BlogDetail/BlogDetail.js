@@ -8,7 +8,7 @@ const BlogDetail = () => {
     const { data: blog=[], isLoading } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:8000/blog/${id}`, {
+            const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/blog/${id}`, {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }

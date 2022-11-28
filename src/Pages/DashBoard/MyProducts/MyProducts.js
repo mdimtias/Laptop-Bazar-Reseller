@@ -10,7 +10,7 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:8000/products/${user?.email}`, {
+          const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/products/${user?.email}`, {
             headers: {
               authorization: localStorage.getItem("token"),
             },
@@ -22,7 +22,7 @@ const MyProducts = () => {
 
       const handleAdvertise = async (product)=>{
         const res = await fetch(
-          `http://localhost:8000/adver/${product?._id}`,
+          `https://assignment-12-server-developertanbir-gmailcom.vercel.app/adver/${product?._id}`,
           {
             method: "PUT",
             headers: {

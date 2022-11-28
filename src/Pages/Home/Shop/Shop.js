@@ -17,7 +17,7 @@ const Shop = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/products/`, {
+      const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/products/`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },

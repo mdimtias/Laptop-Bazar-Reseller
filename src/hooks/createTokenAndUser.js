@@ -1,5 +1,5 @@
 export const createTokenAndUser = (user, email)=>{
-    fetch(`http://localhost:8000/users/${email}`, {
+    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${email}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json"
