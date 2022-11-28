@@ -10,9 +10,11 @@ import "./AddProduct.css";
 
 const AddProduct = () => {
     useTitle("Add Product")
+  
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {user} = useContext(AuthContext)
+  
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {

@@ -28,10 +28,10 @@ console.log(data)
       return;
     }
 
-    if (data.success === false) {
-      toast.success("This product already exist wishlist");
-      return;
-    }
+    // if (data.success === false) {
+    //   toast.success("This product already exist wishlist");
+    //   return;
+    // }
 
   };
 

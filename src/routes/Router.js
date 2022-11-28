@@ -12,6 +12,7 @@ import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
 import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
 import MyWishlist from "../Pages/DashBoard/MyWishlist/MyWishlist";
+import Profile from "../Pages/DashBoard/Profile/Profile";
 import ReportProducts from "../Pages/DashBoard/ReportProducts/ReportProducts";
 import BrandProducts from "../Pages/Home/BrandProducts/BrandProducts";
 import Home from "../Pages/Home/Home/Home";
@@ -22,6 +23,7 @@ import ResetPassword from "../Pages/Login/ResetPassword/ResetPassword";
 import ErrorPage from "../Pages/SharedPage/ErrorPage/ErrorPage";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -75,7 +77,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard",
-                element: <AdminRoute><PrivateRoute><AllUsers></AllUsers></PrivateRoute></AdminRoute>
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path: "/dashboard/products",
@@ -83,7 +85,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/add-product",
-                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+                element: <PrivateRoute><SellerRoute><AddProduct></AddProduct></SellerRoute></PrivateRoute>
             },
             {
                 path: "/dashboard/users",
@@ -103,7 +105,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/my-products",
-                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
+                element: <PrivateRoute><SellerRoute><MyProducts></MyProducts></SellerRoute></PrivateRoute>
             },
             {
                 path: "/dashboard/my-wishlist",

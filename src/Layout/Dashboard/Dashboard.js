@@ -42,6 +42,9 @@ const DashBoard = () => {
             role === "seller" && (
               <>
                 <li>
+                  <Link to="/dashboard/"> Dashboard </Link>
+                </li>
+                <li>
                   <Link to="/dashboard/add-product"> Add Product</Link>
                 </li>
                 <li>
@@ -57,9 +60,6 @@ const DashBoard = () => {
               <>
                 <li>
                   <Link to="/dashboard/products"> All Products</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/add-product"> Add Product</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/users"> All Users</Link>
