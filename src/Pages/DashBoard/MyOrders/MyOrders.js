@@ -16,7 +16,6 @@ const MyOrders = () => {
           return data;
         },
       });
-      console.log(orders);
     return (
         <div>
         <h2 className="text-3xl mb-5">My Orders</h2>
@@ -27,6 +26,8 @@ const MyOrders = () => {
                 <th>SN</th>
                 <th>Image</th>
                 <th>Product Name</th>
+                <th>Location</th>
+                <th>Phone</th>
                 <th>Price</th>
                 <th>Pay</th>
               </tr>
@@ -37,6 +38,8 @@ const MyOrders = () => {
                   <th>{i + 1}</th>
                   <td><img src={order?.image} alt="" className='w-[75px]' /></td>
                   <td>{order?.product_name}</td>
+                  <td>{order?.meeting_location}</td>
+                  <td>{order?.phone}</td>
                   <td>{order?.price}</td>
                   <td>Pay</td>
                 </tr>

@@ -37,7 +37,7 @@ const ReportProducts = () => {
                   <td>{product?.product_name}</td>
                   <td>{product?.categoryName}</td>
                   <td>{product?.product_code}</td>
-                  <td>{product?.sale_price}</td>
+                  <td>${product?.sale_price}</td>
                 </tr>
               ))}
             </tbody>

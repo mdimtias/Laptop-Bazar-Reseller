@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { ImgUpload } from '../../../hooks/ImgUpload';
 import useTitle from '../../../hooks/useTitle';
-// import Loading from '../../Shared/Loading/Loading';
 import "./AddProduct.css";
 
 const AddProduct = () => {
     useTitle("Add Product")
+    const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate();
     const {user} = useContext(AuthContext)
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],

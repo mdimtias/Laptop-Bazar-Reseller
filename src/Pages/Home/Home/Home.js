@@ -5,6 +5,7 @@ import Brands from '../Brands/Brands';
 import Newsletter from '../Newsletter/Newsletter';
 import AllCategory from '../AllCategory/AllCategory';
 import useTitle from '../../../hooks/useTitle';
+import AdvertiseProduct from '../AdvertiseProduct/AdvertiseProduct';
 
 const Home = () => {
     useTitle("Home")
@@ -12,6 +13,7 @@ const Home = () => {
         <>
             <Slider></Slider>
             <AllCategory></AllCategory>
+            <AdvertiseProduct></AdvertiseProduct>
             <AllProducts></AllProducts>
             <Brands></Brands>
             <Newsletter></Newsletter>

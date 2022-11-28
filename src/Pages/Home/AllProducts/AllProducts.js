@@ -4,7 +4,18 @@ import BookingModal from '../../BookingModal/BookingModal';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
-    
+    const { data: products=[] } = useQuery({
+        queryKey: ['product'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:8000/products', {
+                headers: {
+                    authorization: localStorage.getItem("token")
+                }
+            });
+            const data = await res.json();
+            return data;
+        }
+    })
     return (
         <div className='container mx-auto py-10'>
            <div className="category flex justify-between items-center">
@@ -22,19 +33,10 @@ const AllProducts = () => {
                 </ul>
              </div>
            </div>
-            <div className="grid gap-5 mx-0 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
-                
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
-                <Product></Product>
+            <div className="grid gap-5 mx-0 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                {
+                    products?.data?.slice(0, 24).map(product=><Product key={product._id} product={product}></Product>)
+                }
             </div>
             {/* {bookingModalData &&  */}
            

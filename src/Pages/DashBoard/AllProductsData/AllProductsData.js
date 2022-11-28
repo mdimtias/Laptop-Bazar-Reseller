@@ -47,6 +47,7 @@ const AllProductsData = () => {
               <th>SN</th>
               <th>Image</th>
               <th>Name</th>
+              <th>Price</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -62,6 +63,7 @@ const AllProductsData = () => {
                   </div>
                 </th>
                 <td>{product?.product_name}</td>
+                <td>${product?.sale_price}</td>
                 <td>
                   <button className="btn btn-xs btn-danger" onClick={()=>handleDeleteProduct(product)}>Delete</button>
                 </td>

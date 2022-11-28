@@ -13,6 +13,7 @@ import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
 import MyWishlist from "../Pages/DashBoard/MyWishlist/MyWishlist";
 import ReportProducts from "../Pages/DashBoard/ReportProducts/ReportProducts";
+import BrandProducts from "../Pages/Home/BrandProducts/BrandProducts";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/Login/LogIn/LogIn";
 import Registration from "../Pages/Login/Registration/Registration";
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: "/category/:id",
                 element: <PrivateRoute><Category></Category></PrivateRoute>
+            },
+            {
+                path: "/brand/:name",
+                element: <BrandProducts></BrandProducts>
             }
 
         ]
@@ -77,15 +82,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/users",
-                element: <AdminRoute><PrivateRoute><AllUsers></AllUsers></PrivateRoute></AdminRoute>
+                element: <PrivateRoute><AdminRoute><AllUsers></AllUsers></AdminRoute></PrivateRoute>
             },
             {
                 path: "/dashboard/category",
-                element: <AdminRoute><PrivateRoute><AllCategory></AllCategory></PrivateRoute></AdminRoute>
+                element: <PrivateRoute><AdminRoute><AllCategory></AllCategory></AdminRoute></PrivateRoute>
             },
             {
                 path: "/dashboard/add-category",
-                element: <AdminRoute><PrivateRoute> <AddCategory></AddCategory></PrivateRoute></AdminRoute>
+                element: <PrivateRoute> <AdminRoute><AddCategory></AddCategory></AdminRoute></PrivateRoute>
             },
             {
                 path: "/dashboard/my-orders",
@@ -101,7 +106,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/report-product",
-                element: <AdminRoute><PrivateRoute><ReportProducts></ReportProducts> </PrivateRoute></AdminRoute>
+                element: <PrivateRoute><AdminRoute><ReportProducts></ReportProducts></AdminRoute> </PrivateRoute>
             }
         ]
     }

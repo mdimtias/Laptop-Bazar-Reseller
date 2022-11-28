@@ -8,11 +8,12 @@ const AdminRoute = ({children}) => {
     
     const location = useLocation();
     const [isAdmin, isAdminLoading] = useVerifyUser(user?.email)
+    console.log(isAdmin)
     if(loading || isAdminLoading){
         return <progress className="progress w-56"></progress>
     }
 
-    if (user && isAdmin){
+    if (user && isAdmin==="admin"){
         return children;
     }
 

@@ -23,7 +23,6 @@ const BookingModal = ({ bookingModalData, setBookingModalData }) => {
         image: bookingModalData?.image,
         phone
     }
-    console.log(orderData)
 
     fetch("http://localhost:8000/orders", {
         method: "POST",
