@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const MyOrders = () => {
+  useTitle("My Order");
     const {user} = useContext(AuthContext);
     const { data: orders = [], refetch } = useQuery({
         queryKey: ["orders"],

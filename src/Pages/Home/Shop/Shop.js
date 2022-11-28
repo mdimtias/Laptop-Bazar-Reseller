@@ -6,7 +6,7 @@ import Loading from "../../SharedPage/Loading/Loading";
 import NoProduct from "../../SharedPage/NoProduct/NoProduct";
 import Product from "../Product/Product";
 
-const BrandProducts = () => {
+const Shop = () => {
   const [bookingModalData, setBookingModalData] = useState(null);
   const { name } = useParams();
   console.log(name);
@@ -17,7 +17,7 @@ const BrandProducts = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/product/${name}`, {
+      const res = await fetch(`http://localhost:8000/products/`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -34,7 +34,7 @@ const BrandProducts = () => {
   }
   return (
     <div className="container mx-auto py-10">
-      <h2 className="font-bold text-3xl py-5">{products?.data[0]?.brand}</h2>
+      <h2 className="font-bold text-3xl py-5">Shop</h2>
       <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-3 xl:grid-cols-4">
         {products?.data?.map((product) => (
           <Product
@@ -54,4 +54,4 @@ const BrandProducts = () => {
   );
 };
 
-export default BrandProducts;
+export default Shop;

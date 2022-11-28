@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 import Loading from "../../SharedPage/Loading/Loading";
 
 const MyWishlist = () => {
+  useTitle("My Wishlist")
   const { user } = useContext(AuthContext);
   const {
     data: products = [],
@@ -13,7 +15,7 @@ const MyWishlist = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/wishlist`, {
+      const res = await fetch(`http://localhost:8000/wishlist/${user?.email}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },

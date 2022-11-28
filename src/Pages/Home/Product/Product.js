@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import "./Product.css";
+import Star from "../../../assets/star/star.png";
 
 const Product = ({ product, setBookingModalData }) => {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,7 @@ const Product = ({ product, setBookingModalData }) => {
     e.preventDefault();
     const wishlistProduct = { ...product, wishlistEmail: user?.email };
 
-    const res = await fetch(`http://localhost:8000/wishlist/${product?._id}`, {
+    const res = await fetch(`http://localhost:8000/wishlist/${user?.email}/`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -21,7 +22,7 @@ const Product = ({ product, setBookingModalData }) => {
       body: JSON.stringify(wishlistProduct),
     });
     const data = await res.json();
-
+console.log(data)
     if (data.data.upsertedCount > 0) {
       toast.success("Add Wishlist successful");
       return;
@@ -31,6 +32,7 @@ const Product = ({ product, setBookingModalData }) => {
       toast.success("This product already exist wishlist");
       return;
     }
+
   };
 
   // Handle Report
@@ -83,11 +85,11 @@ const Product = ({ product, setBookingModalData }) => {
         </div>
         <div className="rating">
           <span className="flex">
-            <img src="https://img.icons8.com/emoji/512/star-emoji.png" alt="" />
-            <img src="https://img.icons8.com/emoji/512/star-emoji.png" alt="" />
-            <img src="https://img.icons8.com/emoji/512/star-emoji.png" alt="" />
-            <img src="https://img.icons8.com/emoji/512/star-emoji.png" alt="" />
-            <img src="https://img.icons8.com/emoji/512/star-emoji.png" alt="" />
+            <img src={Star} alt="" />
+            <img src={Star} alt="" />
+            <img src={Star} alt="" />
+            <img src={Star} alt="" />
+            <img src={Star} alt="" />
           </span>
         </div>
         <div className="product-by flex text-left gap-1">
