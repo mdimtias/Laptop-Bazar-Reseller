@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./CustomerReview.css";
-
 // import required modules
 import {Autoplay, FreeMode, Pagination } from "swiper";
 

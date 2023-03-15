@@ -69,14 +69,13 @@ console.log(data)
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-400 shadow-xl">
       <figure>
-        <img className="p-3" src={product?.image} alt="Shoes" />
+        <img className="p-3 h-72 w-full" src={product?.image} alt="Shoes" />
       </figure>
       <div className="card-body p-3 mb-3">
         <div className="product-category">
           <Link to="" className="text-left">
-            {" "}
             {product?.categoryName}
           </Link>
         </div>

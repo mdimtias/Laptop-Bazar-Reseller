@@ -3,7 +3,16 @@ import React, { useState } from 'react';
 import BookingModal from '../../BookingModal/BookingModal';
 import Loading from '../../SharedPage/Loading/Loading';
 import Product from '../Product/Product';
-
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+// import required modules
+import {Navigation, Autoplay, FreeMode, Pagination } from "swiper";
+import 'swiper/swiper-bundle.css';
+import "./AdvertiseProduct.css";
 const AdvertiseProduct = () => {
     const [bookingModalData, setBookingModalData] = useState(null);
     const { data: product = [], refetch, isLoading } = useQuery({
@@ -24,13 +33,56 @@ const AdvertiseProduct = () => {
     return (
         <div className='container mx-auto py-10'>
         <h2 className='font-bold text-3xl py-5'>Advertise Product</h2>
-     <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-3 xl:grid-cols-4">
+     {/* <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-3 xl:grid-cols-4"> */}
+     <Swiper
+        slidesPerView={4}
+        spaceBetween={28}
+        freeMode={true}
+        // navigation={true}
+        navigation= {{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }}
+        autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+        speed={1200}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[ Navigation, Autoplay, FreeMode, Pagination]}
+        breakpoints={{
+            200: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
+        className="mySwiper"
+      >
+         
          {
             product?.data?.map((product)=>
-            <Product key={product._id} product={product}  setBookingModalData={setBookingModalData}></Product>
+            <SwiperSlide key={product._id}><Product key={product._id} product={product}  setBookingModalData={setBookingModalData}></Product></SwiperSlide>
              )
          }
-     </div>
+         {
+            product?.data?.map((product)=>
+            <SwiperSlide key={product._id}><Product key={product._id} product={product}  setBookingModalData={setBookingModalData}></Product></SwiperSlide>
+             )
+         }
+           <div className="swiper-button-next"></div>
+           <div className="swiper-button-prev"></div>
+         </Swiper>
+     {/* </div> */}
     {
       bookingModalData && 
       <BookingModal

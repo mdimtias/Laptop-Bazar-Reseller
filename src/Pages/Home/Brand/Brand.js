@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Brand.css";
+import Asus from "../../../assets/brand/asus.png";
+import Dell from "../../../assets/brand/dell.png";
+import Hp from "../../../assets/brand/hp.png";
 
 const Brand = () => {
     return (
@@ -11,7 +14,7 @@ const Brand = () => {
                 <Link to="brand/Dell"><button className="">Shop Now</button></Link>
             </div>
             <div className="brand-img">
-                <img src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c07877568.png" alt="" />
+                <img src={Dell} alt="" />
             </div>
         </div>
         <div className='brand flex justify-between items-center p-6'>
@@ -20,7 +23,7 @@ const Brand = () => {
                 <Link to="brand/Asus"><button className="">Shop Now</button></Link>
             </div>
             <div className="brand-img">
-                <img src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c07877568.png" alt="" />
+                <img src={Asus} alt="" />
             </div>
         </div>
         <div className='brand flex justify-between items-center p-6'>
@@ -29,7 +32,7 @@ const Brand = () => {
                 <Link to="brand/Hp"><button className="">Shop Now</button></Link>
             </div>
             <div className="brand-img">
-                <img src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c07877568.png" alt="" />
+                <img src={Hp} alt="" />
             </div>
         </div>
         </>
