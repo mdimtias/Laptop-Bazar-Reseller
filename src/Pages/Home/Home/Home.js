@@ -7,12 +7,14 @@ import AllCategory from '../AllCategory/AllCategory';
 import useTitle from '../../../hooks/useTitle';
 import AdvertiseProduct from '../AdvertiseProduct/AdvertiseProduct';
 import LowBudgetLaptop from '../LowBudgetLaptop/LowBudgetLaptop';
+import CustomerReview from '../CustomerReview/CustomerReview';
 
 const Home = () => {
     useTitle("Home")
     return (
         <>
             <Slider></Slider>
+            <CustomerReview></CustomerReview>
             <LowBudgetLaptop></LowBudgetLaptop>
             <AllCategory></AllCategory>
             <AdvertiseProduct></AdvertiseProduct>
