@@ -8,7 +8,7 @@ const AllProductsData = () => {
   const { data: products = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("https://assignment-12-server-developertanbir-gmailcom.vercel.app/products", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -18,7 +18,7 @@ const AllProductsData = () => {
     },
   });
   const handleDeleteProduct = (product)=>{
-        fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/products/${product._id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/products/${product._id}`, {
             method: "DELETE",
             headers: {
                 authorization: localStorage.getItem("token")

@@ -23,7 +23,7 @@ const Login = () => {
         const password = form.password.value;
         signIn(email, password)
         .then(async () => {
-             fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${email}`,{
+             fetch(`${process.env.REACT_APP_API_URL}/users/${email}`,{
                     method: "PUT",
                     headers: {
                       "content-type": "application/json"
@@ -48,7 +48,7 @@ const Login = () => {
           email: data?.user?.email,
           role: "buyer"
         }
-        fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${data?.user?.email}`,{
+        fetch(`${process.env.REACT_APP_API_URL}/users/${data?.user?.email}`,{
           method: "PUT",
           headers: {
             "content-type": "application/json"

@@ -13,7 +13,7 @@ const AddCategory = (data) => {
     const { data: categories=[] } = useQuery({
         queryKey: ['specialty'],
         queryFn: async () => {
-            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/category', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/category`, {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }
@@ -34,7 +34,7 @@ const AddCategory = (data) => {
             logo: imageUpload,
         }
         
-        fetch("https://assignment-12-server-developertanbir-gmailcom.vercel.app/category", {
+        fetch(`${process.env.REACT_APP_API_URL}/category`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

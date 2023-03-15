@@ -17,7 +17,7 @@ const BrandProducts = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/product/${name}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/product/${name}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },

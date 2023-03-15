@@ -8,7 +8,7 @@ const AllCategory = () => {
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("https://assignment-12-server-developertanbir-gmailcom.vercel.app/category", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/category`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -19,7 +19,7 @@ const AllCategory = () => {
   });
 
   const handleDeleteCategory = (category)=>{
-        fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/category/${category._id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/category/${category._id}`, {
             method: "DELETE",
             headers: {
                 authorization: localStorage.getItem("token")

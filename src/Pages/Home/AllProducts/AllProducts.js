@@ -8,7 +8,7 @@ const AllProducts = () => {
     const { data: products=[] } = useQuery({
         queryKey: ['product'],
         queryFn: async () => {
-            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/products', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }
@@ -21,7 +21,7 @@ const AllProducts = () => {
     const { data: categories=[] } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('https://assignment-12-server-developertanbir-gmailcom.vercel.app/category', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/category`, {
                 headers: {
                     authorization: localStorage.getItem("token")
                 }

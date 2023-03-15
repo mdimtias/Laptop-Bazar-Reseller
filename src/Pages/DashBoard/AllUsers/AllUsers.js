@@ -10,7 +10,7 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", userRole],
     queryFn: async () => {
-      const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${userRole}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${userRole}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -22,7 +22,7 @@ const AllUsers = () => {
 
   const handleMakeAdmin = (id) => {
     console.log(id);
-    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/admin/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: localStorage.getItem("token"),
@@ -43,7 +43,7 @@ const AllUsers = () => {
 
 // Verify Seller
 const handleVerifyUser = (user)=>{
-    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/seller/${user?._id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/users/seller/${user?._id}`, {
       method: "PUT",
       headers: {
         authorization: localStorage.getItem("token"),
@@ -59,7 +59,7 @@ const handleVerifyUser = (user)=>{
 }
   // Delete User
   const handleDeleteUser = (user)=>{
-    fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/${user._id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/users/${user._id}`, {
             method: "DELETE",
             headers: {
                 authorization: localStorage.getItem("token")

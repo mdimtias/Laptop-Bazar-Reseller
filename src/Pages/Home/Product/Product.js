@@ -13,7 +13,7 @@ const Product = ({ product, setBookingModalData }) => {
     e.preventDefault();
     const wishlistProduct = { ...product, wishlistEmail: user?.email };
 
-    const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/wishlist/${user?.email}/`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/wishlist/${user?.email}/`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ console.log(data)
     };
 
     const res = await fetch(
-      `https://assignment-12-server-developertanbir-gmailcom.vercel.app/reportedProduct/${product?._id}`,
+      `${process.env.REACT_APP_API_URL}/reportedProduct/${product?._id}`,
       {
         method: "PUT",
         headers: {

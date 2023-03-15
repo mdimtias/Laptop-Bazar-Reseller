@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { data: orders = [], refetch } = useQuery({
         queryKey: ["orders"],
         queryFn: async () => {
-          const res = await fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/orders/${user?.email}`, {
+          const res = await fetch(`${process.env.REACT_APP_API_URL}/orders/${user?.email}`, {
             headers: {
               authorization: localStorage.getItem("token"),
             },

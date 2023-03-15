@@ -5,7 +5,7 @@ const useVerifyUser = (email) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`https://assignment-12-server-developertanbir-gmailcom.vercel.app/users/admin/${email}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/users/admin/${email}`, {
         headers: {
           authorization: localStorage.getItem("token"),
         },
