@@ -10,21 +10,23 @@ import LowBudgetLaptop from '../LowBudgetLaptop/LowBudgetLaptop';
 import CustomerReview from '../CustomerReview/CustomerReview';
 import TrendingProducts from '../TrendingProducts/TrendingProducts';
 import ContactUs from '../ContactUs/ContactUs';
+import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
     useTitle("Home")
     return (
         <>
             <Slider></Slider>
-            <ContactUs></ContactUs>
             <TrendingProducts></TrendingProducts>
-            <CustomerReview></CustomerReview>
+            <AdvertiseProduct></AdvertiseProduct>
+            <Brands></Brands>
             <LowBudgetLaptop></LowBudgetLaptop>
             <AllCategory></AllCategory>
-            <AdvertiseProduct></AdvertiseProduct>
             <AllProducts></AllProducts>
-            <Brands></Brands>
+            <CustomerReview></CustomerReview>
             <Newsletter></Newsletter>
+            <ContactUs></ContactUs>
+            <WhyChooseUs></WhyChooseUs>
         </>
     );
 };
