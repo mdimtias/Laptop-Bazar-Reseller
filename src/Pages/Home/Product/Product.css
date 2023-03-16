@@ -1,3 +1,15 @@
+.product{
+    box-shadow: 0 0 10px #0000001a;
+}
+.product .product-image{
+    -webkit-transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+    -o-transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+}
+.product:hover .product-image{
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) translateZ(0);
+    transform: scale3d(1.1, 1.1, 1.1) translateZ(0);
+}
 .category button{
     font-size: 18px;
     color: #253D4E;
@@ -59,7 +71,6 @@
 }
 .use_and_location{
     color: #606060;
-    font-weight: bold;
 }
 .seller-info {
     color: #606060;

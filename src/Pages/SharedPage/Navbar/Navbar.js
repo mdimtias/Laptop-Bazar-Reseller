@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-
+import Logo from "../../../assets/Logo/logo.png";
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext)
   const handleLogOut = (e)=>{
@@ -25,7 +25,7 @@ const Navbar = () => {
         <li><Link to="/">Services</Link></li>
       </ul>
     </div>
-    <Link to="/" className="btn btn-ghost normal-case text-white font-bold text-xl">Laptop Bazar</Link>
+    <Link to="/" className="btn btn-ghost normal-case text-white font-bold text-xl"> <img className="w-12 mr-2"  src={Logo} alt="" /> Laptop Bazar</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0 text-white font-bold">
@@ -36,11 +36,11 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/" className='px-2'>{user?.displayName || user?.email}</Link>
-   {user?.email ?  <Link to="/" className="btn px-2"><button onClick={handleLogOut}>Log Out</button></Link> :
+    <Link to="/" className='px-2 font-bold text-white font-oswald'>{user?.displayName || user?.email}</Link>
+   {user?.email ?  <Link to="/" className="px-5 py-2 rounded-lg text-black bg-white font-bold hover:bg-[#035DED] hover:text-white"><button onClick={handleLogOut}>Log Out</button></Link> :
    <>
-    <Link to="/login" className="btn m-2 text-black bg-white font-bold hover:bg-[#035DED] hover:text-white">Login</Link>
-    <Link to="/signup" className="btn m-2 text-black bg-white font-bold hover:bg-[#035DED] hover:text-white">Sign Up</Link>
+    <Link to="/login" className="px-5 py-2 rounded-lg m-2 text-black bg-white font-bold hover:bg-[#035DED] hover:text-white">Login</Link>
+    <Link to="/signup" className="px-5 py-2 rounded-lg m-2 text-black bg-white font-bold hover:bg-[#035DED] hover:text-white">Sign Up</Link>
    </>
    }
     {user?.photoURL ? <div className="avatar px-2"><div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"><img src={user?.photoURL} alt="" /></div></div> : <></>}

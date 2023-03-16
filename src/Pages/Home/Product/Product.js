@@ -69,9 +69,9 @@ console.log(data)
   };
 
   return (
-    <div className="card bg-base-400 shadow-xl">
-      <figure>
-        <img className="p-3 h-72 w-full" src={product?.image} alt="Shoes" />
+    <div className="card product bg-base-400">
+      <figure className="relative overflow-hidden">
+        <img className="p-3 h-72 w-full product-image" src={product?.image} alt="Shoes" />
       </figure>
       <div className="card-body p-3 mb-3">
         <div className="product-category">
