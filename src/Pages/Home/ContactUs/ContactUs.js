@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <section className="contact-us-section py-16 bg-[#F8F8F8]">
-      <div className="container mx-auto">
+      <div className="container mx-auto xl:px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="contact-us bg-white shadow-lg py-8">
             <h2 className="text-center text-2xl">Ask us anything here</h2>
@@ -78,7 +78,7 @@ const ContactUs = () => {
                 </svg>
               </div>
               <div className="contact-text">
-                <p className="text-md text-gray-400">Call for help now!</p>
+                <p className="text-md text-gray-400 text-left">Call for help now!</p>
                 <h3 className="text-2xl font-bold">+91-765432185</h3>
               </div>
             </div>
@@ -100,7 +100,7 @@ const ContactUs = () => {
                 </svg>
               </div>
               <div className="contact-text">
-                <p className="text-md text-gray-400">Say Hello</p>
+                <p className="text-md text-gray-400 text-left">Say Hello</p>
                 <h3 className="text-2xl font-bold">info@website.com</h3>
               </div>
             </div>
@@ -127,9 +127,9 @@ const ContactUs = () => {
                 </svg>
               </div>
               <div className="contact-text">
-                <p className="text-md text-gray-400">Address</p>
+                <p className="text-md text-gray-400 text-left">Address</p>
                 <h3 className="text-2xl font-bold">
-                  1259 Freedom, New York United States
+                  1579 Freedom, New York United States
                 </h3>
               </div>
             </div>

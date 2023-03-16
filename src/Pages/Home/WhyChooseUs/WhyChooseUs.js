@@ -3,7 +3,7 @@ import React from "react";
 const WhyChooseUs = () => {
   return (
     <section className="why-choose-us py-10">
-      <div className="container mx-auto">
+      <div className="container mx-auto xl:px-5">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div className="why-choose-card bg-[#f7f7f7] hover:bg-black flex group justify-center items-center py-7 gap-5 rounded-lg">
             <div className="why-choose-icon">
