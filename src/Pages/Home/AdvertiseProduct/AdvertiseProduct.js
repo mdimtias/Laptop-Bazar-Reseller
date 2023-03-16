@@ -31,14 +31,14 @@ const AdvertiseProduct = () => {
         return <Loading></Loading>
       }
     return (
-        <div className='container mx-auto py-10'>
+        <section className="advertise-products pt-7 pb-10">
+          <div className='container mx-auto px-5'>
         <h2 className='font-bold text-3xl py-5'>Advertise Product</h2>
      {/* <div className="grid gap-5 mx-0 grid-cols-1 px-5 md:grid-cols-2 lg:px-0 lg:grid-cols-3 xl:grid-cols-4"> */}
      <Swiper
         slidesPerView={4}
         spaceBetween={28}
         freeMode={true}
-        // navigation={true}
         navigation= {{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -90,7 +90,8 @@ const AdvertiseProduct = () => {
       setBookingModalData={setBookingModalData}
       ></BookingModal>
     }
- </div>
+        </div>
+        </section>
     );
 };
 

@@ -11,6 +11,7 @@ import CustomerReview from '../CustomerReview/CustomerReview';
 import TrendingProducts from '../TrendingProducts/TrendingProducts';
 import ContactUs from '../ContactUs/ContactUs';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
+import OurPartners from '../OurPartners/OurPartners';
 
 const Home = () => {
     useTitle("Home")
@@ -18,15 +19,18 @@ const Home = () => {
         <>
             <Slider></Slider>
             <TrendingProducts></TrendingProducts>
+            <OurPartners></OurPartners>
+            <LowBudgetLaptop></LowBudgetLaptop>
             <AdvertiseProduct></AdvertiseProduct>
             <Brands></Brands>
-            <LowBudgetLaptop></LowBudgetLaptop>
             <AllCategory></AllCategory>
             <AllProducts></AllProducts>
             <CustomerReview></CustomerReview>
             <Newsletter></Newsletter>
             <ContactUs></ContactUs>
             <WhyChooseUs></WhyChooseUs>
+
+
         </>
     );
 };

@@ -16,10 +16,10 @@ const TrendingProducts = () => {
         }
     })
     return (
-        <section className="trending-products">
-            <div className="container mx-auto">
+        <section className="trending-products pt-10 pb-14">
+            <div className="container mx-auto px-5">
                 <div className="trending-product-header">
-                    <h2 className='font-bold text-3xl py-8'>Trending Product</h2>
+                    <h2 className='font-bold text-3xl pb-8'>Trending Product</h2>
                 </div>
                 <div className="grid gap-5 mx-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {

@@ -31,11 +31,11 @@ const Newsletter = () => {
 
     }
     return (
-        <div className="newsletter-section bg-black">
-            <div className='container mx-auto py-10'>
+        <div className="newsletter-section py-10 bg-gradient-to-r from-[rgba(2,0,36,1)] via-[rgba(6,26,118,1)] to-[rgba(6,26,118,1)]">
+            <div className='container mx-auto px-5'>
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 py-5 newsletter">
                     <div className="subscribe">
-                        <h2 className="font-bold text-green-400  text-3xl mb-3">Stay home & get your daily <br />needs from our shop</h2>
+                        <h2 className="font-bold text-white  text-3xl mb-3">Stay home & get your daily <br />needs from our shop</h2>
                         <p className="text-gray-400 text-xl mb-4">Start You'r Daily Shopping with <Link to="/">Second-hand Laptop</Link></p>
                         <form action="" onSubmit={handleSubscribe}>
                         <input type="text" placeholder="Enter Your Email Address" className="input input-bordered input-accent w-full max-w-xs" name="email" />

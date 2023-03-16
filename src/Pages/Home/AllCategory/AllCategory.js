@@ -32,12 +32,14 @@ const AllCategory = () => {
     })
     
     return (
-        <div className='container mx-auto py-10'>
+        <section className="all-category-section py-10">
+            <div className='container mx-auto px-5'>
            <div className="all-category">
              <div>
-             <h2 className='text-3xl font-bold py-5 text-left'>Popular Category</h2>
+             <h2 className='text-3xl font-bold pb-8 text-center'>Popular Category</h2>
              </div>
-             <div className="grid gap-2 mx-0 grid-cols-3 md:grid-cols-5 lg:grid-cols-10">
+             {/* <div className="grid gap-2 mx-0 grid-cols-3 md:grid-cols-5 lg:grid-cols-10 justify-center"> */}
+             <div className="flex flex-wrap gap-3 justify-center">
              {
                  categories?.data?.map(category=>{
                     const lengthPd = products?.data?.filter(pd=>pd.categoryName === category.name)
@@ -48,6 +50,7 @@ const AllCategory = () => {
             </div>
         </div>
         </div>
+        </section>
     );
 };
 export default AllCategory;

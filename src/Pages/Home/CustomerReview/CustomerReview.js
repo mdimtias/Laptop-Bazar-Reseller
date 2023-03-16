@@ -14,7 +14,7 @@ import {Autoplay, FreeMode, Pagination } from "swiper";
 const CustomerReview = () => {
   return (
     <section className="customer-review-section bg-[#F8F9FA] py-16">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 justify-center items-center">
        
           <div className="review-heading">

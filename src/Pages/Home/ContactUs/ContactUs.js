@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <section className="contact-us-section py-16 bg-[#F8F8F8]">
-      <div className="container mx-auto xl:px-5">
+      <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="contact-us bg-white shadow-lg py-8">
             <h2 className="text-center text-2xl">Ask us anything here</h2>
@@ -12,42 +12,42 @@ const ContactUs = () => {
                 <div className="">
                   <input
                     type="text"
-                    class="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                    className="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                     placeholder="Name *"
                   />
                 </div>
                 <div className="">
                   <input
                     type="email"
-                    class="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                    className="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                     placeholder="Email *"
                   />
                 </div>
                 <div className="">
                   <input
                     type="number"
-                    class="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                    className="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                     placeholder="Phone *"
                   />
                 </div>
                 <div className="">
                   <input
                     type="text"
-                    class="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                    className="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                     placeholder="Address *"
                   />
                 </div>
                 <div className="mb-5">
                   <input
                     type="text"
-                    class="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                    className="border-slate-200 py-2 rounded-full w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                     placeholder="Subject *"
                   />
                 </div>
               </div>
               <div className="mb-5 px-10 w-full">
                 <textarea
-                  class="h-32 border-slate-200 py-2 rounded-2xl w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                  className="h-32 border-slate-200 py-2 rounded-2xl w-full px-3 border border-solid focus:border-[#0A2284] outline-none text-[#666] bg-[#F8F8F8] placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                   placeholder="Message *"
                 />
               </div>
@@ -128,7 +128,7 @@ const ContactUs = () => {
               </div>
               <div className="contact-text">
                 <p className="text-md text-gray-400 text-left">Address</p>
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-2xl font-bold text-left">
                   1579 Freedom, New York United States
                 </h3>
               </div>

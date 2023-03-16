@@ -1,10 +1,9 @@
 import React from 'react';
 
 const LowBudgetLaptop = () => {
-    const sectionBackground = "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(6,26,118,1) 20%, rgba(30,98,173,1) 100%)"
     return (
         <section className="low-budget-laptop bg-gradient-to-r from-[rgba(2,0,36,1)] via-[rgba(6,26,118,1)] to-[rgba(30,98,173,1)] py-20">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-5">
                 <div className="grid grid-cols-1 justify-center items-center">
                     <div className="low-budget">
                         <h1 className='text-3xl font-bold text-white mb-5'>Customize Your High-Performance Laptop on a Low Budget</h1>
