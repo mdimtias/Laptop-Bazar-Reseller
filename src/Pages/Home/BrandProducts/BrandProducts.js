@@ -12,7 +12,6 @@ const BrandProducts = () => {
   console.log(name);
   const {
     data: products = [],
-    refetch,
     isLoading
   } = useQuery({
     queryKey: ["product"],

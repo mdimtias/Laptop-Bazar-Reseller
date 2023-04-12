@@ -6,7 +6,7 @@ import useTitle from '../../../hooks/useTitle';
 const MyOrders = () => {
   useTitle("My Order");
     const {user} = useContext(AuthContext);
-    const { data: orders = [], refetch } = useQuery({
+    const { data: orders = [] } = useQuery({
         queryKey: ["orders"],
         queryFn: async () => {
           const res = await fetch(`${process.env.REACT_APP_API_URL}/orders/${user?.email}`, {

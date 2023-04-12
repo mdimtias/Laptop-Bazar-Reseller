@@ -15,7 +15,7 @@ import 'swiper/swiper-bundle.css';
 import "./AdvertiseProduct.css";
 const AdvertiseProduct = () => {
     const [bookingModalData, setBookingModalData] = useState(null);
-    const { data: product = [], refetch, isLoading } = useQuery({
+    const { data: product = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
           const res = await fetch(`${process.env.REACT_APP_API_URL}/product-advertise`, {

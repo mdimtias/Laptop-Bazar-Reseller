@@ -1,6 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { json, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./Newsletter.css";
 
 const Newsletter = () => {

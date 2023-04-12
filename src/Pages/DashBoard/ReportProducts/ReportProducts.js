@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const ReportProducts = () => {
-    const { data: products = [], refetch } = useQuery({
+    const { data: products = [] } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
           const res = await fetch(`${process.env.REACT_APP_API_URL}/reportedProduct`, {

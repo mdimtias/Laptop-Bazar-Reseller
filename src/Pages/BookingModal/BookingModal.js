@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({ bookingModalData, setBookingModalData }) => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const handleOrder = (event) => {
     event.preventDefault();

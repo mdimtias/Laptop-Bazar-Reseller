@@ -8,7 +8,7 @@ import Loading from '../SharedPage/Loading/Loading';
 const Category = () => {
   const [bookingModalData, setBookingModalData] = useState(null);
     const {id} = useParams();
-    const { data: category = [], refetch, isLoading } = useQuery({
+    const { data: category = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
           const res = await fetch(`${process.env.REACT_APP_API_URL}/category/${id}`, {
