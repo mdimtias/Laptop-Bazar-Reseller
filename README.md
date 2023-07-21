@@ -37,7 +37,4 @@ If you want to buy a second-hand electronic product on Laptop Bazar, follow thes
     4. Once you agree on a price, arrange for the delivery of the product.
     5. Receive the product and make the payment.
 
-## Conclusion
-Laptop Bazar is the perfect platform for anyone who wants to buy or sell second-hand electronic products. With our user-friendly interface, secure payments, verified sellers, wide variety of products, and competitive prices, you can be sure that you are getting a fair deal. So, create an account today and start buying or selling your products on Laptop Bazar!
-
 ![Laptop Bazar](./public/readme.png)
